@@ -1,2 +1,3 @@
 # Dragon-Ball-Z---Leggendary-Super-Warriors---Remake
-Reupdate original project with small sounds
+
+remake of original gbc game in Java.
