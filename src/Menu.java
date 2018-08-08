@@ -2,22 +2,12 @@
  * @author Daniele Bufalo
  * @version 1.0
  */
-
-import java.awt.Container;
 import java.io.File;
-import java.io.IOException;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-//import javafx.scene.image.Image;
-
 //fonts:
 //https://translate.google.it/translate?hl=it&sl=en&tl=it&u=http%3A%2F%2Fwww.ntu.edu.sg%2Fhome%2Fehchua%2Fprogramming%2Fjava%2FJ8c_PlayingSound.html&anno=2
 
@@ -87,16 +77,11 @@ import javax.swing.JPanel;
     	{
     		windowImage(image1);
     		sleep(time);
-    		System.out.print("anim1");
     		windowImage(image2);
     		sleep(time);
-    		System.out.print(",anim2   ");
-
     		//loop situation testing
     		i--;
     		i++;
-
-    		System.out.print("  "+i+"\n");
     	}
     	System.out.println("end animation");
     }
