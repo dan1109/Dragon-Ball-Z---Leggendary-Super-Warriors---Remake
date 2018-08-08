@@ -1,0 +1,3 @@
+To execute Dbz.jar (mustn't move file in other place!),
+Double click on "Run.bat"
+Have Fun!
