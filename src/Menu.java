@@ -3,6 +3,7 @@
  * @version 1.0
  */
 
+import java.awt.Container;
 import java.io.File;
 import java.io.IOException;
 import javax.sound.sampled.AudioInputStream;
@@ -28,12 +29,6 @@ import javax.swing.JPanel;
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-
-    /** The panel. */
-    private JPanel panel;	//save current panel
-
-    /** The label. */
-    private JLabel label;	//save current label
 	/**
 	 * Instantiates a new sound clip test.
 	 *
@@ -83,22 +78,26 @@ import javax.swing.JPanel;
      * @param time  (in millisec)
      * @throws LineUnavailableException
      */
-    //there are bugs in animation !
+    //FINALLY WORKING!! I removed private jlabel jpanel
     public void afterLaunch(String image1,String image2,int time,int count) throws LineUnavailableException
-    {	int i=0;
+    {	int i=1;
 	    windowImage(image1);
-    	while(i<count)
+
+    	while(i<=count)
     	{
-    		sleep(time);
-    		windowImage(image2);
-    		System.out.print(",anim2   ");
-    		sleep(time);
     		windowImage(image1);
+    		sleep(time);
     		System.out.print("anim1");
+    		windowImage(image2);
+    		sleep(time);
+    		System.out.print(",anim2   ");
+
+    		//loop situation testing
+    		i--;
     		i++;
+
     		System.out.print("  "+i+"\n");
     	}
-    	windowImage(image1);	//immagine fine animazione start
     	System.out.println("end animation");
     }
 
@@ -141,8 +140,6 @@ import javax.swing.JPanel;
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         	this.setVisible(true);
 
-        	setPanel(panel);
-        	setLabel(label);
         }
         /**
          * FirstWindow of menu.
@@ -161,8 +158,6 @@ import javax.swing.JPanel;
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         	this.setVisible(true);
 
-        	setPanel(panel);
-        	setLabel(label);
         }
 
        /**
@@ -177,6 +172,8 @@ import javax.swing.JPanel;
 
         	String basePath = new File("").getAbsolutePath();
         	ImageIcon icon = new ImageIcon(basePath+image);
+    		JPanel panel= new JPanel();
+    		JLabel label= new JLabel();
             label.setIcon(icon);
             panel.add(label);
         	this.getContentPane().add(panel);
@@ -196,6 +193,8 @@ import javax.swing.JPanel;
 
          	String basePath = new File("").getAbsolutePath();
          	ImageIcon icon = new ImageIcon(basePath+image);
+    		JPanel panel= new JPanel();
+    		JLabel label= new JLabel();
             label.setIcon(icon);
             panel.add(label);
          	this.getContentPane().add(panel);
@@ -218,45 +217,8 @@ import javax.swing.JPanel;
             this.getContentPane().add(panel);
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         	this.setVisible(true);
-
-        	setPanel(panel);
-        	setLabel(label);
         }
-	/**
-	 * Gets the panel.
-	 *
-	 * @return the panel
-	 */
-	public JPanel getPanel() {
-		return panel;
-	}
 
-	/**
-	 * Sets the panel.
-	 *
-	 * @param panel the new panel
-	 */
-	public void setPanel(JPanel panel) {
-		this.panel = panel;
-	}
-
-	/**
-	 * Gets the label.
-	 *
-	 * @return the label
-	 */
-	public JLabel getLabel() {
-		return label;
-	}
-
-	/**
-	 * Sets the label.
-	 *
-	 * @param label the new label
-	 */
-	public void setLabel(JLabel label) {
-		this.label = label;
-	}
     /**
      * The main method.
      *
