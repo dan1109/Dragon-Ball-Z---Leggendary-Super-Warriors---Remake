@@ -1,100 +1,82 @@
+/**
+ * @author Daniele Bufalo
+ * @version 1.0
+ */
 package mypackage;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
-import javax.sound.sampled.LineUnavailableException;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-/**Work perfectly!*/
+import mypackage.Resources;	//i renamed default package in mypackage cause it's better for import!!!
+
+// TODO: Auto-generated Javadoc
+/**
+ * Work perfectly!.
+ */
 public class Select extends JPanel {
 
-    /**
-	 *
-	 */
+    /** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+
+	/** The b width. */
 	private final int B_WIDTH = 500;
+
+    /** The b height. */
     private final int B_HEIGHT = 450;
 
+    /** The initial x. */
     //There are important! INITIAL X and Y!!
-    private final int INITIAL_X = 125;//-40
-    private final int INITIAL_Y = 301;//-40
+    public final int INITIAL_X = 125;//-40
 
-    private final int Y_HEIGHT = 381;//-40
+    /** The initial y. */
+    public final static int INITIAL_Y = 301;//-40
 
-    /** x y for background*/
+    /** The y height. */
+    public final static int Y_HEIGHT = 381;//-40
+
+    /**  x y for background. */
     private final int X = 0;//-40
+
+    /** The y. */
     private final int Y = 0;//-40
 
-    private Image options;
-    private Image select;
-    private int x, y;
+    /** The options. */
+    public Image options;
 
-    public static void main(String[] args)
+    /** The select. */
+    public Image select;
+
+    /** The y. */
+    private int x;
+
+	public static int y;
+
+    /**
+     * Instantiates a new select.
+     */
+    public Select()
     {
-    	new Select();
+    	//initBoard();
     }
 
-    Select()
-    {
-    		initBoard();
-    	    addKeyListener(new KeyListener() {
-    			@Override
-    			public void keyTyped(KeyEvent e) {
-    			}
-
-    			@Override
-    			public void keyReleased(KeyEvent e) {
-    				System.out.println("keyReleased="+KeyEvent.getKeyText(e.getKeyCode()));
-    				}
-
-    			@Override
-    			public void keyPressed(KeyEvent e) {
-    				System.out.println("keyPressed="+KeyEvent.getKeyText(e.getKeyCode()));
-    			  if((e.getKeyCode() == KeyEvent.VK_DOWN))
-    	           {
-    				  selectDown();
-    	           }
-    			  if((e.getKeyCode() == KeyEvent.VK_UP))
-   	           		{
-       				  selectUp();
-   	           		}
-    			}
-    		});
-    		setFocusable(true);
-    }
-
-
-    public void selectUp()
-    {
-    	  y-=25;
-			if(y<=INITIAL_Y)
-			{
-				y=INITIAL_Y;
-			}
-			repaint();
-    }
-    public void selectDown()
-    {
-    		y+=25;
-	        if (y > Y_HEIGHT) {
-	            y = INITIAL_Y;
-	        }
-	        repaint();
-    }
-
+    /**
+     * Load image.
+     */
     private void loadImage() {
 
         ImageIcon ii = new ImageIcon(Resources.getBasePath()+Resources.getIconsPath()+"select.png");
         select = ii.getImage();
     }
 
-    private void initBoard() {
+    /**
+     * Inits the board.
+     */
+    public void initBoard() {
 
         setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
         setDoubleBuffered(true);
@@ -107,6 +89,9 @@ public class Select extends JPanel {
     }
 
 
+    /* (non-Javadoc)
+     * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+     */
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -115,23 +100,65 @@ public class Select extends JPanel {
         drawSelect(g);
     }
 
-    private void drawSelect(Graphics g) {
+    /**
+ 	 * Select up.
+ 	 */
+ 	public void selectUp()
+	    {
+ 		Select.y-=25;
+				if(Select.y<=Select.INITIAL_Y)
+				{
+					Select.y=Select.INITIAL_Y;
+				}
+				repaint();
+	    }
 
+    	/**
+    	 * Select down.
+    	 */
+    	public void selectDown()
+	    {
+	    		Select.y+=25;
+		        if (Select.y > Select.Y_HEIGHT) {
+		        	Select.y = Select.INITIAL_Y;
+		        }
+		        repaint();
+	    }
+
+
+    /**
+     * Draw select.
+     *
+     * @param g the g
+     */
+    private void drawSelect(Graphics g) {
         g.drawImage(select, x, y, this);
         Toolkit.getDefaultToolkit().sync();
     }
 
+    /**
+     * Draw options.
+     *
+     * @param g the g
+     */
     private void drawOptions(Graphics g) {
-
         g.drawImage(options, X, Y, this);
         Toolkit.getDefaultToolkit().sync();
     }
 
 
+	/**
+	 * Gets the options.
+	 *
+	 * @return the options
+	 */
 	public Image getOptions() {
 		return options;
 	}
 
+	/**
+	 * Load options.
+	 */
 	public void loadOptions() {
         ImageIcon ii = new ImageIcon(Resources.getBasePath()+Resources.getIconsPath()+"options.png");
         options = ii.getImage();	}

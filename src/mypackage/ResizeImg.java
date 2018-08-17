@@ -1,3 +1,7 @@
+/**
+ * @author Daniele Bufalo
+ * @version 1.0
+ */
 package mypackage;
 import java.awt.AlphaComposite;
 import java.awt.Graphics2D;
@@ -7,6 +11,10 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ResizeImg.
+ */
 /*
  * @author mkyon
  *
@@ -17,11 +25,17 @@ import javax.imageio.ImageIO;
  */
 public class ResizeImg {
 
-	/**width of resized image*/
+	/** width of resized image. */
 	private static final int IMG_WIDTH = 500;
-	/**height of resized image*/
+	
+	/** height of resized image. */
 	private static final int IMG_HEIGHT = 450;
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String [] args){
 
 	try{
@@ -39,7 +53,13 @@ public class ResizeImg {
 	}
     }
 
-	/**Simple resize. I never use this*/
+	/**
+	 * Simple resize. I never use this
+	 *
+	 * @param originalImage the original image
+	 * @param type the type
+	 * @return the buffered image
+	 */
     private static BufferedImage resizeImage(BufferedImage originalImage, int type){
 	BufferedImage resizedImage = new BufferedImage(IMG_WIDTH, IMG_HEIGHT, type);
 	Graphics2D g = resizedImage.createGraphics();
@@ -49,7 +69,13 @@ public class ResizeImg {
 	return resizedImage;
     }
 
-    /**Alternative better resize*/
+    /**
+     * Alternative better resize.
+     *
+     * @param originalImage the original image
+     * @param type the type
+     * @return the buffered image
+     */
     private static BufferedImage resizeImageWithHint(BufferedImage originalImage, int type){
 
 	BufferedImage resizedImage = new BufferedImage(IMG_WIDTH, IMG_HEIGHT, type);

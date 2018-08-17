@@ -1,3 +1,7 @@
+/**
+ * @author Daniele Bufalo
+ * @version 1.0
+ */
 package mypackage;
 /**
  * @author Daniele Bufalo
@@ -126,8 +130,9 @@ public class Sounds {
 
 	/**
 	 * Play a music after creation of Resources in an other function
-	 * for etsting Resources methods
+	 * for etsting Resources methods.
 	 *
+	 * @param sound the sound
 	 * @throws LineUnavailableException the line unavailable exception
 	 */
 	public void PlayWavInEmptyWindow(String sound) throws LineUnavailableException

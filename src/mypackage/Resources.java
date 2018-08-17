@@ -1,3 +1,7 @@
+/**
+ * @author Daniele Bufalo
+ * @version 1.0
+ */
 package mypackage;
 /**
  * @author Daniele Bufalo
@@ -28,6 +32,7 @@ public class Resources {
 	/** The base path. */
 	private static final String basePath = new File("").getAbsolutePath();
 
+	/** The Constant resourcesPath. */
 	private static final String resourcesPath="\\resources\\";
 
 	/** The sounds. */
@@ -45,15 +50,39 @@ public class Resources {
 	/** The name list. */
 	private static ArrayList<String> nameList;	//list to safe files of a specific dyr..
 
+	/**
+	 * Gets the base path.
+	 *
+	 * @return the base path
+	 */
 	public static String getBasePath()
 	{
 		return basePath;
 	}
+
+	/**
+	 * Gets the icons path.
+	 *
+	 * @return the icons path
+	 */
 	public static String getIconsPath()
 	{
 		return iconsPath;
 	}
 
+	/**
+	 * Gets the sounds path.
+	 *
+	 * @return the icons path
+	 */
+	public static String getSoundPath()
+	{
+		return soundsPath.substring(1);	//playwav( resources//...) not //resources//..
+	}
+
+	/**
+	 * Testing image.
+	 */
 	public static void testingImage()
 	{
 		String test="icons";
@@ -67,8 +96,9 @@ public class Resources {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();}
 	}
+
 	/**
-	 * testing sound of this class
+	 * testing sound of this class.
 	 */
 	public static void testingSound()
 	{

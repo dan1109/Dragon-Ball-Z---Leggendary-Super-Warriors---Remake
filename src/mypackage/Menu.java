@@ -1,10 +1,15 @@
+/**
+ * @author Daniele Bufalo
+ * @version 1.0
+ */
 package mypackage;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 /**
  * @author Daniele Bufalo
  * @version 1.0
  */
 import java.io.File;
-import java.util.Scanner;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.swing.ImageIcon;
@@ -12,11 +17,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import java.awt.Image;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.image.BufferedImage;
+import Keyboard.KeyListeners;
 
+// TODO: Auto-generated Javadoc
 //fonts:
 //https://translate.google.it/translate?hl=it&sl=en&tl=it&u=http%3A%2F%2Fwww.ntu.edu.sg%2Fhome%2Fehchua%2Fprogramming%2Fjava%2FJ8c_PlayingSound.html&anno=2
 
@@ -24,61 +27,46 @@ import java.awt.image.BufferedImage;
  * The Class SoundClipTest.
  */
  public class Menu extends JFrame {
-	 /**
-	  * if press START animation of menu is interrupted
-	  */
+
+ 	/** if press START animation of menu is interrupted. */
 	private boolean startmenu=false;
+
+	public boolean getStartMenu()
+	{
+		return startmenu;
+	}
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The constructor, that  Override KeyEvent for Play !!
-	 * we add a KeyListener to play in menu constructor
-	 * @throws LineUnavailableException
+	 * we add a KeyListener to play in menu constructor.
+	 *
+	 * @throws LineUnavailableException the line unavailable exception
 	 */
     public Menu() throws LineUnavailableException {
-    	  		addKeyListener(new KeyListener() {
-    			@Override
-    			public void keyTyped(KeyEvent e) {
-    			}
+    	KeyListeners k= new KeyListeners();
+    	k.menuKey(this);	//passing menu
+    	addKeyListener(k.getMenu());
 
-    			@Override
-    			public void keyReleased(KeyEvent e) {
-    			}
-
-    			@Override
-    			public void keyPressed(KeyEvent e) {
-    				if ((e.getKeyCode() == KeyEvent.VK_ENTER)) {
-    					setTrue(startmenu);
-    				}
-    			}
-    		});
-    		setFocusable(true);
-    		//finally adding the test function
-    		//allWorkDone();	//comment allWOrkDone to test other class
+    		allWorkDone();	//comment allWOrkDone to test other class
     	}
 
-	/**set startmenu to true*/
-	public void setTrue(boolean x)
+	/**
+	 * set startmenu to true.
+	 *
+	 * @param x the new true
+	 */
+	public void setTrue()
 	{
-		x=true;
+		startmenu=true;
 	}
 
-    /** A copy of MeunuFrame.java*/
-    private void initUI() {
-
-        add(new Select());
-        setResizable(false);
-        pack();
-        setTitle("Select");
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
-    }
     /**
-     * true main lol
-     * @throws LineUnavailableException
+     * true main lol.
+     *
+     * @throws LineUnavailableException the line unavailable exception
      */
     public void allWorkDone() throws LineUnavailableException
     {
@@ -88,12 +76,13 @@ import java.awt.image.BufferedImage;
     	String soundmenu="resources\\sounds\\03 BGM #03.wav";
     	launch();
     	Sounds.playwav(soundmenu);	//playmusic launch
-    	titleWindowEmpty();
     	switchStart(menu,menustart,800,10);	//500 mlsec, 20 times while
     }
+
     /**
      * Launch.
-     * @throws LineUnavailableException
+     *
+     * @throws LineUnavailableException the line unavailable exception
      */
     public void launch() throws LineUnavailableException
     {
@@ -109,15 +98,16 @@ import java.awt.image.BufferedImage;
      * it's an animation of two images in a particular time.
      * It's looped but if you press start is interrupted. Working!
      *
-     * @param image1 the image 1
-     * @param image2 the image 2
+     * @param backgroundImage the background image
+     * @param imageUp the image up
      * @param time  (in millisec)
-     * @throws LineUnavailableException
+     * @param count the count
+     * @throws LineUnavailableException the line unavailable exception
      */
     public void switchStart(String backgroundImage,String imageUp,int time,int count) throws LineUnavailableException
-    {	String options="\\resources\\images\\Icons\\options.png";
-    	String sound="resources\\sounds\\Press Start sound effect.wav";
+    { 	String sound=Resources.getSoundPath()+"Press Start sound effect.wav";
     	int i=0;
+
     	while(startmenu!=true)
     	{
     		windowImage(backgroundImage);
@@ -125,6 +115,7 @@ import java.awt.image.BufferedImage;
     		windowImage(imageUp);
     		sleep(time);
     	}
+    	i=0;
 		Sounds.playwav(sound);
     	while(i<3)
     	{
@@ -134,7 +125,16 @@ import java.awt.image.BufferedImage;
     		sleep(time/3);
     		i++;
     	}
-		//windowImage(options);
+
+    	Select s=new Select();
+    	KeyListeners k= new KeyListeners();
+    	k.removeKeyMenuListener();//remove menu comand
+    	k.OptionsKey(s);	//add options menu comand
+    	addKeyListener(k.getOptions());
+    	add(s);
+    	s.initBoard();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
     }
 
     /**
@@ -151,14 +151,16 @@ import java.awt.image.BufferedImage;
 
             e.printStackTrace();
         }
-    }    /**
-         * a general method to customize title, width and length
-         * of a first generic Window adding an image
-         * @param title
-         * @param width
-         * @param length
-         * @param image
-         */
+    }
+    /**
+     * a general method to customize title, width and length
+     * of a first generic Window adding an image.
+     *
+     * @param title the title
+     * @param image the image
+     * @param width the width
+     * @param length the length
+     */
         public void setTitleWindowImage(String title,String image,int width,int length)
         {	//width is larghezza
         	JPanel panel = new JPanel();
@@ -192,7 +194,7 @@ import java.awt.image.BufferedImage;
             this.getContentPane().add(panel);
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         	this.setVisible(true);
-
+            setLocationRelativeTo(null);	//Winodw in centre of screen
         }
 
        /**
@@ -201,7 +203,6 @@ import java.awt.image.BufferedImage;
         * but it isn't resizable
         *
         * @param image the image
-        * @throws LineUnavailableException
         */
         public void windowImage(String image){
         	ImageIcon icon = new ImageIcon(getCompletePath(image));
@@ -212,15 +213,14 @@ import java.awt.image.BufferedImage;
         	this.getContentPane().add(panel);
         	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         	this.setVisible(true);
-        	//this.setResizable(true);  //a test
         }
+
         /**
          * Window menu.
          * show the image passed as arguments
          * but resizable
          *
          * @param image the image
-         * @throws LineUnavailableException
          */
          public void windowImageResizable(String image){
 
@@ -235,6 +235,13 @@ import java.awt.image.BufferedImage;
          	this.setResizable(true);  //a test
          }
 
+        /**
+         * Sets the only title empty window.
+         *
+         * @param title the title
+         * @param width the width
+         * @param length the length
+         */
         public void setOnlyTitleEmptyWindow(String title,int width,int length)
         {
         	//width is larghezza
@@ -251,6 +258,12 @@ import java.awt.image.BufferedImage;
         	this.setVisible(true);
         }
 
+        /**
+         * Gets the complete path.
+         *
+         * @param relative the relative
+         * @return the complete path
+         */
         public static String getCompletePath(String relative)
         {
         	String basePath = new File("").getAbsolutePath();
