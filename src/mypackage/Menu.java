@@ -50,7 +50,7 @@ import Keyboard.KeyListeners;
     	k.menuKey(this);	//passing menu
     	addKeyListener(k.getMenu());
 
-    		allWorkDone();	//comment allWOrkDone to test other class
+    	allWorkDone();	//comment allWOrkDone to test other class
     	}
 
 	/**
@@ -74,9 +74,12 @@ import Keyboard.KeyListeners;
     	String menustart="\\resources\\images\\Icons\\menu+start.png";
     	//String start="\\resources\\images\\Icons\\start-icon.png";	//only start button
     	String soundmenu="resources\\sounds\\03 BGM #03.wav";
+    	VideoPlayer v = new VideoPlayer();
+    	v.playMp4();//play game boy animation with pliiinn sound
     	launch();
     	Sounds.playwav(soundmenu);	//playmusic launch
     	switchStart(menu,menustart,800,10);	//500 mlsec, 20 times while
+    	afterPressStart();	//show options
     }
 
     /**
@@ -89,9 +92,7 @@ import Keyboard.KeyListeners;
     	String launch="\\resources\\images\\Icons\\start.png";
    	    titleWindowEmpty();//its nonsense! if you delete window(); clip.start have 1 second of duration, bhoooo
 		windowImage(launch);
-       	String launchsound="resources\\sounds\\Gameboy Startup Sound.wav";
-       	Sounds.playwav(launchsound);	//playmusic launch
-    	sleep(3000);
+		Menu.sleep(3000);
     }
 
     /**
@@ -105,9 +106,9 @@ import Keyboard.KeyListeners;
      * @throws LineUnavailableException the line unavailable exception
      */
     public void switchStart(String backgroundImage,String imageUp,int time,int count) throws LineUnavailableException
-    { 	String sound=Resources.getSoundPath()+"Press Start sound effect.wav";
+    {
+    	String sound=Resources.getSoundPath()+"Start.wav";
     	int i=0;
-
     	while(startmenu!=true)
     	{
     		windowImage(backgroundImage);
@@ -125,18 +126,26 @@ import Keyboard.KeyListeners;
     		sleep(time/3);
     		i++;
     	}
+    }
 
+    /**
+     * Use select keylistener and show options
+     */
+    public void afterPressStart()
+    {
     	Select s=new Select();
     	KeyListeners k= new KeyListeners();
+
     	k.removeKeyMenuListener();//remove menu comand
     	k.OptionsKey(s);	//add options menu comand
     	addKeyListener(k.getOptions());
     	add(s);
+
     	s.initBoard();
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
-
     /**
      * Sleep.
      *

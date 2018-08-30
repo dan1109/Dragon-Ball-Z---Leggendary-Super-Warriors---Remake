@@ -63,11 +63,10 @@ public class Select extends JPanel {
     {
     	//initBoard();
     }
-
     /**
      * Load image.
      */
-    private void loadImage() {
+    private void loadSelect() {
 
         ImageIcon ii = new ImageIcon(Resources.getBasePath()+Resources.getIconsPath()+"select.png");
         select = ii.getImage();
@@ -82,7 +81,7 @@ public class Select extends JPanel {
         setDoubleBuffered(true);
 
         loadOptions();
-        loadImage();
+        loadSelect();
 
         x = INITIAL_X;
         y = INITIAL_Y;
@@ -155,6 +154,13 @@ public class Select extends JPanel {
 	public Image getOptions() {
 		return options;
 	}
+
+	/**
+	 * Load options.
+	 */
+	public void loadMultiplayerOptions() {
+        ImageIcon ii = new ImageIcon(Resources.getBasePath()+Resources.getIconsPath()+"options.png");
+        options = ii.getImage();	}
 
 	/**
 	 * Load options.

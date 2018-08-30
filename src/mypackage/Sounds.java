@@ -76,6 +76,10 @@ public class Sounds {
  	           Clip clip = AudioSystem.getClip();
  	           clip.open(audioIn);
  	           clip.start();
+ 	           if(sound.equals("resources\\sounds\\03 BGM #03.wav") )
+ 	           {
+
+ 	           }
  	           //clip.loop(Clip.LOOP_CONTINUOUSLY);  // repeat forever
  	           } catch (UnsupportedAudioFileException e) {
  	               e.printStackTrace();

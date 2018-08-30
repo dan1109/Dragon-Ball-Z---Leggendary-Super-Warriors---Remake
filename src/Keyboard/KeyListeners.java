@@ -9,6 +9,7 @@ import java.awt.event.KeyListener;
 import javax.swing.JPanel;
 
 import mypackage.Select;
+import mypackage.Sounds;
 import mypackage.Menu;
 import mypackage.Resources;
 
@@ -26,6 +27,10 @@ public class KeyListeners extends JPanel{
 
 	/** The options. */
 	 private static  KeyListener options;
+	 /** The choose mode with press Enter. */
+	 private boolean OptionEnter=false;
+	 /** The choose mode with press Enter in Multiplayer */
+	 private boolean MultiEnter=false;
 
 	 public KeyListener getOptions()
 	 {
@@ -104,34 +109,62 @@ public class KeyListeners extends JPanel{
 			public void keyPressed(KeyEvent e) {
 			  if((e.getKeyCode() == KeyEvent.VK_DOWN))
 	           {
+				  Sounds.playwav(Resources.getSoundPath()+"direction.wav");
 				  s.selectDown();
 	           }
 			  if((e.getKeyCode() == KeyEvent.VK_UP))
 	           	{
+				  Sounds.playwav(Resources.getSoundPath()+"direction.wav");
    				  s.selectUp();
 	           	}
 			  if((e.getKeyCode() == KeyEvent.VK_ENTER))
 	           {
 				  if(s.y==301)
 				  {
+					  Sounds.playwav(Resources.getSoundPath()+"A.wav");
 					  Resources.print("Continua gioco!");
+					  setOptionEnterTrue();
 				  }
 				  else if(s.y==326)
 				  {
+					  Sounds.playwav(Resources.getSoundPath()+"A.wav");
 					  Resources.print("Multigiocatore!");
+					  setOptionEnterTrue();
+					  //something...
+					  //setMultiEnterTrue();
 				  }
 				  else if(s.y==351)
 				  {
+					  Sounds.playwav(Resources.getSoundPath()+"A.wav");
 					  Resources.print("Battaglia!");
+					  setOptionEnterTrue();
 				  }
 				  else if(s.y==376)
 				  {
+					  Sounds.playwav(Resources.getSoundPath()+"A.wav");
 					  Resources.print("Rinizia daccapo!");
+					  setOptionEnterTrue();
 				  }
 	           }
 			}
 		};
 		setFocusable(true);//end methods keylistener
+	}
+
+	public boolean getOptionEnter() {
+		return OptionEnter;
+	}
+
+	public void setOptionEnterTrue() {
+		OptionEnter = true;
+	}
+
+	public boolean getMultiEnter() {
+		return MultiEnter;
+	}
+
+	public void setMultiEnterTrue() {
+		MultiEnter = true;
 	}
 
 }

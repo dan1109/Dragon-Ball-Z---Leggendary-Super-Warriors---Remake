@@ -43,6 +43,9 @@ public class Resources {
 
 	/** The icons. */
 	private static final String iconsPath=imagesPath+"Icons\\";
+	
+	/** The icons. */
+	private static final String videosPath=resourcesPath+"videos\\";
 
 	/** The portrait. */
 	private static final String portraitPath=imagesPath+"Portrait\\";
