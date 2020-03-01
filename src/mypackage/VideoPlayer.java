@@ -2,18 +2,18 @@ package mypackage;
 import java.io.File;
 import java.net.MalformedURLException;
 
-import javax.sound.sampled.LineUnavailableException;
-import javax.swing.*;
+import javax.swing.JFrame;
+
 import javafx.application.Platform;
-import javafx.beans.value.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.embed.swing.JFXPanel;
-import javafx.event.*;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
-import javafx.scene.media.*;
-import javafx.util.Duration;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 
 public class VideoPlayer extends JFrame {
 

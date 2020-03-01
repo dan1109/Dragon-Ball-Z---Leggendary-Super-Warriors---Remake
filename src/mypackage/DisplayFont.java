@@ -22,7 +22,7 @@ class DisplayFont {
 	public void getFont()  throws Exception
 	{
 		ConvertFilePathToURL conv=new ConvertFilePathToURL();
-    	String url=conv.ConvertPathinURL(conv.basePath+conv.resourcesPath+"Fonts\\"+"pkmn rbygsc.ttf");
+    	String url=conv.ConvertPathinURL(ConvertFilePathToURL.basePath+ConvertFilePathToURL.resourcesPath+"Fonts\\"+"pkmn rbygsc.ttf");
         URL fontUrl = new URL(url.toString());
         Font font = Font.createFont(Font.TRUETYPE_FONT, fontUrl.openStream());
         font = font.deriveFont(Font.PLAIN,20);
@@ -31,7 +31,7 @@ class DisplayFont {
         ge.registerFont(font);
 
         font_path=font;
-        abc_path=conv.basePath+conv.resourcesPath+"Fonts\\"+"pkmn rbygsc.ttf";
+        setAbc_path(ConvertFilePathToURL.basePath+ConvertFilePathToURL.resourcesPath+"Fonts\\"+"pkmn rbygsc.ttf");
 	}
 	public void setFontLabelMessage()
 	{
@@ -45,4 +45,12 @@ class DisplayFont {
     public static void main(String[] args) throws Exception {
     	new DisplayFont();
     }
+
+	public String getAbc_path() {
+		return abc_path;
+	}
+
+	public void setAbc_path(String abc_path) {
+		this.abc_path = abc_path;
+	}
 }

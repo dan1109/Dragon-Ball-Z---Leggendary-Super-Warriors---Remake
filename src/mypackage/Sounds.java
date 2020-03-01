@@ -101,9 +101,9 @@ public class Sounds {
 	public static int SearchMusic(Resources x,String y)
 	{	int i=0;
 		//System.out.println(y); //example: 02 BGM #02.wav
-		int dim=x.dim();
+		int dim=Resources.dim();
 		while(i<dim)
-		{	if(x.getFileRelativePath(i).contains(y))
+		{	if(Resources.getFileRelativePath(i).contains(y))
 			{
 				return i;
 			}
@@ -121,11 +121,11 @@ public class Sounds {
 	{
 		this.setTempname("01 BGM #01.wav");
 		Resources music=new Resources();
-		music.getFilesDir("sounds");
+		Resources.getFilesDir("sounds");
 		@SuppressWarnings("unused")
 		Menu menu=new Menu();
-		int found= this.SearchMusic(music,this.getTempname());
-		String output=music.getFileRelativePath(found);
+		int found= Sounds.SearchMusic(music,this.getTempname());
+		String output=Resources.getFileRelativePath(found);
 
 		TestwavPanelLabel();
 		playwav(output);

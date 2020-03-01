@@ -119,13 +119,13 @@ public class KeyListeners extends JPanel{
 	           	}
 			  if((e.getKeyCode() == KeyEvent.VK_ENTER))
 	           {
-				  if(s.y==301)
+				  if(Select.y==301)
 				  {
 					  Sounds.playwav(Resources.getSoundPath()+"A.wav");
 					  Resources.print("Continua gioco!");
 					  setOptionEnterTrue();
 				  }
-				  else if(s.y==326)
+				  else if(Select.y==326)
 				  {
 					  Sounds.playwav(Resources.getSoundPath()+"A.wav");
 					  Resources.print("Multigiocatore!");
@@ -133,13 +133,13 @@ public class KeyListeners extends JPanel{
 					  //something...
 					  //setMultiEnterTrue();
 				  }
-				  else if(s.y==351)
+				  else if(Select.y==351)
 				  {
 					  Sounds.playwav(Resources.getSoundPath()+"A.wav");
 					  Resources.print("Battaglia!");
 					  setOptionEnterTrue();
 				  }
-				  else if(s.y==376)
+				  else if(Select.y==376)
 				  {
 					  Sounds.playwav(Resources.getSoundPath()+"A.wav");
 					  Resources.print("Rinizia daccapo!");

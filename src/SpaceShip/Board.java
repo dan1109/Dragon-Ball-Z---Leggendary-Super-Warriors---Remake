@@ -20,7 +20,12 @@ import javax.swing.Timer;
  */
 public class Board extends JPanel implements ActionListener {
 
-    /** The timer. */
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2361297151308161238L;
+
+	/** The timer. */
     private Timer timer;
     
     /** The space ship. */

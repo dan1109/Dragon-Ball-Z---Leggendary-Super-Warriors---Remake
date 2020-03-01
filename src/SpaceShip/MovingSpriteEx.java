@@ -13,7 +13,12 @@ import javax.swing.JFrame;
  */
 public class MovingSpriteEx extends JFrame {
 
-    /**
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5186774476270410875L;
+
+	/**
      * Instantiates a new moving sprite ex.
      */
     public MovingSpriteEx() {

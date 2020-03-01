@@ -60,7 +60,8 @@ public class ResizeImg {
 	 * @param type the type
 	 * @return the buffered image
 	 */
-    private static BufferedImage resizeImage(BufferedImage originalImage, int type){
+    @SuppressWarnings("unused")
+	private static BufferedImage resizeImage(BufferedImage originalImage, int type){
 	BufferedImage resizedImage = new BufferedImage(IMG_WIDTH, IMG_HEIGHT, type);
 	Graphics2D g = resizedImage.createGraphics();
 	g.drawImage(originalImage, 0, 0, IMG_WIDTH, IMG_HEIGHT, null);

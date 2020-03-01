@@ -246,4 +246,8 @@ public class Resources {
 		new Resources();
 
 	}
+
+	public static String getVideospath() {
+		return videosPath;
+	}
 }

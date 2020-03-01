@@ -3,8 +3,6 @@
  * @version 1.0
  */
 package mypackage;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 /**
  * @author Daniele Bufalo
  * @version 1.0
