@@ -15,6 +15,7 @@ import mypackage.Resources;
 
 // TODO: Auto-generated Javadoc
 /**
+ * ecco
  * The Class KeyListeners.
  */
 public class KeyListeners extends JPanel{
